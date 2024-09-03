@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATU Bookshop Reservation </title>
+  <meta name="title" content="ATU Bookshop Reservation">
+  <meta name="description" content="Welcome to the ATU Bookshop Reservation System. Browse and book your preferred books online.">
+
+  <!-- Custom CSS link -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- Google font link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #f1f1f1}
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color: #3e8e41;
+    }
+
+    .dropdown .input-field {
+      width: 100%;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header" data-header>
+    <div class="container">
+      <div>
+        <img src="./assets/images/download.png" width="200" height="300" alt="ATU logo" class="w-100">
+      </div>
+
+      <a href="#" class="logo">ATU Bookshop</a>
+
+      <nav class="navbar" data-navbar>
+        <ul class="navbar-list">
+          <li class="navbar-item"><a href="#home" class="navbar-link" data-nav-link>Home</a></li>
+          <li class="navbar-item"><a href="#engineering" class="navbar-link" data-nav-link>Engineering</a></li>
+          <li class="navbar-item"><a href="#literature" class="navbar-link" data-nav-link>Literature</a></li>
+          <li class="navbar-item"><a href="#contact" class="navbar-link" data-nav-link>Contact</a></li>
+        </ul>
+
+        <div class="dropdown">
+          <input type="text" id="main-search-bar" class="input-field" placeholder="Search for books, sections, or book ID..." onkeyup="mainSearch(event)">
+          <div id="main-search-results" class="search-results"></div>
+          <div class="dropdown-content" id="main-dropdown-content"></div>
+        </div>
+      </nav>
+
+      <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true" class="open"></ion-icon>
+        <ion-icon name="close-outline" aria-hidden="true" class="close"></ion-icon>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <!-- HERO SECTION -->
+      <section class="section hero" id="home" aria-label="home">
+        <div class="container">
+          <div class="hero-content">
+            <p class="section-subtitle">
+              <br>
+              <br>ACCRA TECHNICAL UNIVERSITY</p>
+            <h1 class="h1 hero-title">Bookshop Reservation </h1>
+            <p class="section-text">Welcome to our online book reservation system. Look through our wide range of books and send us a booking request.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEARCH SECTION -->
+      <section class="section search" id="search" aria-label="search">
+        <div class="container">
+          <input type="text" id="search-bar" class="input-field" placeholder="Search for books or sections..." onkeyup="searchBooks()">
+        </div>
+      </section>
+
+      <!-- ENGINEERING SECTION -->
+      <section class="section chapters" id="engineering">
+        <div class="container">
+          <p class="section-subtitle">Engineering section</p>
+          <h2 class="h2 section-title has-underline">Books<span class="span has-before"></span></h2>
+          
+          <div class="dropdown">
+            <input type="text" class="input-field" placeholder="Search in Engineering section..." onkeyup="searchInSection('engineering')">
+            <div class="dropdown-content" id="engineering-dropdown-content"></div>
+          </div>
+          
+          <ul class="grid-list">
+            <li>
+              <div class="chapter-card">
+                <h3 class="h3 card-title">Auto mobiles</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="chapter-card">
+                <h3 class="h3 card-title">The language of Engineers</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="chapter-card">
+                <h3 class="h3 card-title">The Electricity world</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="chapter-card">
+                <p class="card-subtitle">Book_ID=gh04</p>
+                <h3 class="h3 card-title">Engineering maths</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="chapter-card">
+                <h3 class="h3 card-title">Design and architecture</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="chapter-card">
+                <p class="card-subtitle">Book_ID=123b</p>
+                <h3 class="h3 card-title">The rise</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="chapter-card">
+                <p class="card-subtitle">Book_ID=143B</p>
+                <h3 class="h3 card-title">Literary</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="chapter-card">
+                <p class="card-subtitle">Book_ID=fdd3456</p>
+                <h3 class="h3 card-title">Engineering coding</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="chapter-card">
+                <p class="card-subtitle">Book_ID=273C</p>
+                <h3 class="h3 card-title">Where is the Tech Era?</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="chapter-card">
+                <p class="card-subtitle">Book_ID=27C</p>
+                <h3 class="h3 card-title">Tech's Rise</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="chapter-card">
+                <p class="card-subtitle">Book_ID=27C</p>
+                <h3 class="h3 card-title">computer science </h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- LITERATURE SECTION -->
+      <section class="section chapters" id="literature">
+        <div class="container">
+          <p class="section-subtitle">Literature section</p>
+          <h2 class="h2 section-title has-underline">Books<span class="span has-before"></span></h2>
+          
+          <div class="dropdown">
+            <input type="text" class="input-field" placeholder="Search in Literature section..." onkeyup="searchInSection('literature')">
+            <div class="dropdown-content" id="literature-dropdown-content"></div>
+          </div>
+          
+          <ul class="grid-list">
+            <li>
+              <div class="chapter-card">
+                <h3 class="h3 card-title">Tech in time</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="chapter-card">
+                <h3 class="h3 card-title">Time regulation</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+            <li>
+              <div class="chapter-card">
+                <h3 class="h3 card-title">History of Tech</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- RESERVATION FORM -->
+      <section class="section reservation-form" id="reservation-form" aria-label="reservation-form">
+        <div class="container">
+          <p class="section-subtitle">Reservation</p>
+          <h2 class="h2 section-title has-underline">Reservation Form<span class="span has-before"></span></h2>
+
+          <form id="requestForm" action="/submit" method="post">
+            <div>
+              <label for="uniqueCode">Unique Code:</label>
+              <input type="text" id="uniqueCode" name="uniqueCode" readonly>
+            </div>
+            <div>
+              <label for="section">Select Section:</label>
+              <select id="section" name="section">
+                <option value="engineering">Engineering</option>
+                <option value="literature">Literature</option>
+              </select>
+            </div>
+            <div>
+              <label for="bookId">Enter Book ID:</label>
+              <input type="text" id="bookId" name="bookId" required>
+            </div>
+            <div>
+              <label for="userName">Your Name:</label>
+              <input type="text" id="userName" name="userName" required>
+            </div>
+            <div>
+              <label for="indexNumber">Your Index Number:</label>
+              <input type="text" id="indexNumber" name="indexNumber" required>
+            </div>
+            <button type="button" onclick="generatePDF()">Download Request Form</button>
+            <button type="submit">Submit Request</button>
+          </form>
+          
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section class="section contact" id="contact" aria-label="contact">
+        <div class="container">
+          <div class="contact-card">
+            <div class="card-content">
+              <h3 class="h3 card-title">Contact Us</h3>
+              <p class="card-text">For any inquiries or assistance, please feel free to reach out to us.</p>
+              <ul class="contact-list">
+                <li class="contact-item">
+                  <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+                  <address class="address">Accra Technical University, Accra, Ghana</address>
+                </li>
+                <li class="contact-item">
+                  <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+                  <a href="tel:+0123456789" class="contact-link">+0123456789</a>
+                </li>
+                <li class="contact-item">
+                  <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+                  <a href="mailto:info@atu.edu.gh" class="contact-link">info@atu.edu.gh</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <!-- Custom Script -->
+  <script src="./assets/js/script.js"></script>
+  <script>
+    function generateUniqueCode() {
+      return 'CODE-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+    }
+
+    function searchBooks() {
+      var input, filter, ul, li, a, i, txtValue;
+      input = document.getElementById('search-bar');
+      filter = input.value.toUpperCase();
+      ul = document.querySelector('.grid-list');
+      li = ul.getElementsByTagName('li');
+
+      for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByClassName('chapter-card')[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+
+    function searchInSection(section) {
+      var input, filter, div, a, i;
+      input = document.querySelector(`#${section} .input-field`);
+      filter = input.value.toUpperCase();
+      div = document.getElementById(`${section}-dropdown-content`);
+      a = div.getElementsByTagName('a');
+
+      for (i = 0; i < a.length; i++) {
+        if (a[i].textContent.toUpperCase().indexOf(filter) > -1) {
+          a[i].style.display = "";
+        } else {
+          a[i].style.display = "none";
+        }
+      }
+    }
+
+    function mainSearch(event) {
+      var input, filter, div, a, i;
+      input = document.getElementById('main-search-bar');
+      filter = input.value.toUpperCase();
+      div = document.getElementById('main-dropdown-content');
+      a = div.getElementsByTagName('a');
+
+      if (event.keyCode === 13) {
+        for (i = 0; i < a.length; i++) {
+          if (a[i].textContent.toUpperCase().indexOf(filter) > -1) {
+            a[i].click();
+            break;
+          }
+        }
+      } else {
+        for (i = 0; i < a.length; i++) {
+          if (a[i].textContent.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+          } else {
+            a[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+    function generatePDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      const section = document.getElementById('section').value;
+      const bookId = document.getElementById('bookId').value;
+      const userName = document.getElementById('userName').value;
+      const indexNumber = document.getElementById('indexNumber').value;
+      const uniqueCode = document.getElementById('uniqueCode').value;
+
+      doc.text(`Unique Code: ${uniqueCode}`, 10, 10);
+      doc.text(`Section: ${section}`, 10, 20);
+      doc.text(`Book ID: ${bookId}`, 10, 30);
+      doc.text(`User Name: ${userName}`, 10, 40);
+      doc.text(`Index Number: ${indexNumber}`, 10, 50);
+
+      doc.save('request_form.pdf');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('uniqueCode').value = generateUniqueCode();
+    });
+  </script>
+</body>
+</html>
