@@ -53,7 +53,7 @@ multidict==6.0.5
 passlib==1.7.4
 prompt-toolkit==3.0.47
 psycopg2-binary==2.9.9
-pycurl==7.43.0.6
+
 PyJWT==2.8.0
 PyMySQL==1.1.1
 python-dateutil==2.9.0.post0
